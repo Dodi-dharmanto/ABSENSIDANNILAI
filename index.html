@@ -316,6 +316,11 @@
         const classFilterGrades = document.getElementById('class-filter-grades'), nameFilterGrades = document.getElementById('name-filter-grades');
         const loaderGrades = document.getElementById('loader-grades'), gradesTableContainer = document.getElementById('grades-table-container');
 
+        // --- INITIALIZATION ---
+        
+        // Apply customizations from localStorage on initial script load for login screen
+        applyCustomizations(JSON.parse(localStorage.getItem('customization')) || {});
+
         // --- AUTHENTICATION ---
         onAuthStateChanged(auth, user => {
             currentUser = user;
@@ -346,6 +351,7 @@
         async function initApp() {
             setTodayDate();
             addEventListeners();
+            await loadCustomization(); // Load customizations from Firestore
             await fetchStudents();
             switchView('attendance');
         }
@@ -578,8 +584,8 @@
             document.getElementById('confirm-export-button').addEventListener('click', handleExport);
 
             // Customization
-            document.getElementById('primary-color').addEventListener('input', e => document.documentElement.style.setProperty('--color-primary', e.target.value));
-            document.getElementById('secondary-color').addEventListener('input', e => document.documentElement.style.setProperty('--color-secondary', e.target.value));
+            document.getElementById('primary-color').addEventListener('input', e => saveCustomization({ primaryColor: e.target.value }));
+            document.getElementById('secondary-color').addEventListener('input', e => saveCustomization({ secondaryColor: e.target.value }));
             document.getElementById('logo-upload').addEventListener('change', handleLogoUpload);
         }
 
@@ -684,14 +690,67 @@
             }
         }
         
+        function applyCustomizations(settings) {
+            const { primaryColor, secondaryColor, logoUrl } = settings;
+            if (primaryColor) {
+                document.documentElement.style.setProperty('--color-primary', primaryColor);
+                document.getElementById('primary-color').value = primaryColor;
+            }
+            if (secondaryColor) {
+                document.documentElement.style.setProperty('--color-secondary', secondaryColor);
+                document.getElementById('secondary-color').value = secondaryColor;
+            }
+            if (logoUrl) {
+                document.getElementById('login-logo').src = logoUrl;
+                document.getElementById('dashboard-logo').src = logoUrl;
+            }
+        }
+
+        async function saveCustomization(settings) {
+            if (!currentUser) return;
+            // Apply visually immediately
+            applyCustomizations(settings);
+            // Save to localStorage for quick refresh
+            const currentSettings = JSON.parse(localStorage.getItem('customization')) || {};
+            const newSettings = { ...currentSettings, ...settings };
+            localStorage.setItem('customization', JSON.stringify(newSettings));
+            // Save to Firestore for cross-device persistence
+            const settingsRef = doc(db, 'users', currentUser.uid, 'settings', 'customization');
+            try {
+                await setDoc(settingsRef, settings, { merge: true });
+            } catch (error) {
+                handleFirestoreError(error, 'menyimpan pengaturan tampilan');
+            }
+        }
+
+        async function loadCustomization() {
+            if (!currentUser) return;
+            const settingsRef = doc(db, 'users', currentUser.uid, 'settings', 'customization');
+            try {
+                const docSnap = await getDoc(settingsRef);
+                if (docSnap.exists()) {
+                    const settings = docSnap.data();
+                    applyCustomizations(settings);
+                    localStorage.setItem('customization', JSON.stringify(settings));
+                }
+            } catch (error) {
+                 handleFirestoreError(error, 'memuat pengaturan tampilan');
+            }
+        }
+
         function handleLogoUpload(e) {
             const file = e.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = (event) => {
                     const url = event.target.result;
-                    document.getElementById('login-logo').src = url;
-                    document.getElementById('dashboard-logo').src = url;
+                    // Note: Base64 can be very large. For production, upload to Firebase Storage and save the URL.
+                    // For this example, we save the Base64 string directly.
+                    if (url.length > 1000000) { // Approx 1MB limit check
+                        alert('Ukuran file logo terlalu besar. Coba gunakan gambar yang lebih kecil.');
+                        return;
+                    }
+                    saveCustomization({ logoUrl: url });
                 };
                 reader.readAsDataURL(file);
             }
