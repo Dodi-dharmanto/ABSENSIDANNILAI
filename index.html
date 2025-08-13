@@ -23,6 +23,8 @@
             --color-primary-hover: #4338ca; /* Indigo-700 */
             --color-secondary: #10b981; /* Emerald-500 */
             --color-secondary-hover: #059669; /* Emerald-600 */
+            --color-danger: #ef4444; /* Red-500 */
+            --color-danger-hover: #dc2626; /* Red-600 */
             --color-background: #f3f4f6; /* Gray-100 */
             --color-card: #ffffff;
             --color-text-primary: #1f2937; /* Gray-800 */
@@ -34,61 +36,20 @@
             background-color: var(--color-background);
             color: var(--color-text-primary);
         }
-        .btn-primary {
-            background-color: var(--color-primary);
-            transition: background-color 0.3s;
-        }
-        .btn-primary:hover {
-            background-color: var(--color-primary-hover);
-        }
-        .btn-secondary {
-            background-color: var(--color-secondary);
-            transition: background-color 0.3s;
-        }
-        .btn-secondary:hover {
-            background-color: var(--color-secondary-hover);
-        }
-        .card {
-            background-color: var(--color-card);
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-        .input-field {
-            border-color: var(--color-border);
-        }
-        .input-field:focus {
-            outline: 2px solid var(--color-primary);
-            border-color: transparent;
-        }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--color-primary);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .nav-link {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            color: var(--color-text-secondary);
-            font-weight: 500;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        .nav-link:hover {
-            background-color: #eef2ff; /* Indigo-100 */
-            color: var(--color-primary);
-        }
-        .nav-link.active {
-            background-color: var(--color-primary);
-            color: white;
-        }
+        .btn-primary { background-color: var(--color-primary); transition: background-color 0.3s; }
+        .btn-primary:hover { background-color: var(--color-primary-hover); }
+        .btn-secondary { background-color: var(--color-secondary); transition: background-color 0.3s; }
+        .btn-secondary:hover { background-color: var(--color-secondary-hover); }
+        .card { background-color: var(--color-card); border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); }
+        .input-field { border-color: var(--color-border); }
+        .input-field:focus { outline: 2px solid var(--color-primary); border-color: transparent; }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--color-primary); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .nav-link { display: flex; align-items: center; padding: 0.75rem 1rem; border-radius: 0.5rem; color: var(--color-text-secondary); font-weight: 500; transition: background-color 0.2s, color 0.2s; }
+        .nav-link:hover { background-color: #eef2ff; color: var(--color-primary); }
+        .nav-link.active { background-color: var(--color-primary); color: white; }
+        .att-btn { border: 1px solid var(--color-border); color: var(--color-text-secondary); }
+        .att-btn.active { background-color: var(--color-danger); color: white; border-color: var(--color-danger); }
     </style>
 </head>
 <body class="antialiased">
@@ -135,130 +96,90 @@
                         </div>
                     </div>
                     
-                    <!-- Navigation -->
                     <nav class="flex-1 space-y-2">
-                        <a href="#" id="nav-attendance" class="nav-link active">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" /></svg>
-                            Manajemen Absensi
-                        </a>
-                        <a href="#" id="nav-grades" class="nav-link">
-                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" /><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" /></svg>
-                            Input Nilai
-                        </a>
+                        <a href="#" id="nav-attendance" class="nav-link active"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" /></svg>Manajemen Absensi</a>
+                        <a href="#" id="nav-grades" class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" /><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" /></svg>Input Nilai</a>
                     </nav>
 
-                    <!-- Customization & Logout -->
                     <div class="mt-auto">
-                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mt-6">Pengaturan</h3>
-                        <div class="mt-4">
-                             <button id="clear-data-button" class="w-full flex items-center justify-center py-2 px-4 border border-red-300 text-sm font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 012 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" /></svg>
-                                Hapus Semua Data
-                            </button>
+                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mt-6">Export Data</h3>
+                        <div class="mt-2 space-y-2">
+                            <button id="export-attendance-button" class="w-full flex items-center justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Export Absensi</button>
+                            <button id="export-grades-button" class="w-full flex items-center justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">Export Nilai</button>
                         </div>
+                        <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mt-6">Pengaturan</h3>
+                        <div class="mt-4"><button id="clear-data-button" class="w-full flex items-center justify-center py-2 px-4 border border-red-300 text-sm font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm4 0a1 1 0 012 0v6a1 1 0 11-2 0V8z" clip-rule="evenodd" /></svg>Hapus Semua Data</button></div>
                         <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mt-6">Kustomisasi</h3>
                         <div class="mt-4 space-y-4">
                             <div><label for="primary-color" class="block text-sm font-medium text-gray-700">Warna Utama</label><input type="color" id="primary-color" value="#4f46e5" class="mt-1 block w-full h-8 rounded-md border-gray-300"></div>
                             <div><label for="secondary-color" class="block text-sm font-medium text-gray-700">Warna Sekunder</label><input type="color" id="secondary-color" value="#10b981" class="mt-1 block w-full h-8 rounded-md border-gray-300"></div>
                             <div><label for="logo-upload" class="block text-sm font-medium text-gray-700">Ganti Logo</label><input type="file" id="logo-upload" accept="image/*" class="mt-1 text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"></div>
                         </div>
-                        <button id="logout-button" class="w-full mt-6 flex items-center justify-center py-2 px-4 border border-red-300 text-sm font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" /></svg>
-                            Logout
-                        </button>
+                        <button id="logout-button" class="w-full mt-6 flex items-center justify-center py-2 px-4 border border-red-300 text-sm font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" /></svg>Logout</button>
                     </div>
                 </div>
-                 <!-- Sidebar Overlay -->
                 <div id="sidebar-overlay" class="hidden sm:hidden fixed inset-0 bg-black bg-opacity-50 z-20"></div>
 
                 <!-- Main Content -->
                 <div class="flex-1 flex flex-col overflow-hidden">
-                    <header class="bg-white shadow-sm p-4 flex justify-between items-center">
-                        <button id="sidebar-toggle" class="sm:hidden p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                        </button>
-                        <h2 id="main-title" class="text-xl sm:text-2xl font-semibold text-gray-800">Manajemen Absensi</h2>
-                        <div id="current-date" class="text-sm sm:text-lg font-medium text-gray-600"></div>
-                    </header>
+                    <header class="bg-white shadow-sm p-4 flex justify-between items-center"><button id="sidebar-toggle" class="sm:hidden p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button><h2 id="main-title" class="text-xl sm:text-2xl font-semibold text-gray-800">Manajemen Absensi</h2><div id="current-date" class="text-sm sm:text-lg font-medium text-gray-600"></div></header>
 
                     <!-- Attendance View -->
                     <main id="attendance-view" class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4 sm:p-6">
                         <div class="card p-4 mb-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
-                                <div class="space-y-2"><label class="font-semibold text-gray-700">Database Siswa</label><div class="flex space-x-2"><button id="import-button" class="w-full flex-1 btn-primary text-white font-bold py-2 px-4 rounded-lg inline-flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg><span>Import</span></button><input type="file" id="import-file" class="hidden" accept=".xlsx, .xls"><button id="export-button" class="w-full flex-1 btn-secondary text-white font-bold py-2 px-4 rounded-lg inline-flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" /></svg><span>Export</span></button></div></div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+                                <div class="space-y-2"><label class="font-semibold text-gray-700">Database Siswa</label><div class="flex space-x-2"><button id="import-button" class="w-full flex-1 btn-primary text-white font-bold py-2 px-4 rounded-lg inline-flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg><span>Import</span></button><input type="file" id="import-file" class="hidden" accept=".xlsx, .xls"></div></div>
                                 <div class="space-y-2"><label for="date-filter" class="font-semibold text-gray-700">Tanggal Absensi</label><input type="date" id="date-filter" class="input-field w-full px-3 py-2 border rounded-lg focus:outline-none"></div>
                                 <div class="space-y-2"><label for="class-filter" class="font-semibold text-gray-700">Filter Kelas</label><select id="class-filter" class="input-field w-full px-3 py-2 border rounded-lg focus:outline-none"><option value="">Semua Kelas</option></select></div>
+                                <div class="space-y-2"><label for="absence-filter" class="font-semibold text-gray-700">Filter Kehadiran</label><select id="absence-filter" class="input-field w-full px-3 py-2 border rounded-lg focus:outline-none"><option value="">Semua Status</option><option value="Hadir">Hadir</option><option value="Sakit">Sakit</option><option value="Ijin">Ijin</option><option value="Alpa">Alpa</option></select></div>
                                 <div class="space-y-2"><label for="name-filter" class="font-semibold text-gray-700">Cari Nama Siswa</label><input type="text" id="name-filter" placeholder="Ketik nama..." class="input-field w-full px-3 py-2 border rounded-lg focus:outline-none"></div>
                             </div>
                         </div>
-                        <div class="card overflow-x-auto">
-                            <div id="loader-attendance" class="hidden justify-center items-center p-10"><div class="loader"></div><p class="ml-4 text-gray-600">Memuat data...</p></div>
-                            <table id="attendance-table-container" class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50"><tr><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NIS</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Siswa</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th><th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Kehadiran</th></tr></thead>
-                                <tbody id="attendance-table-body" class="bg-white divide-y divide-gray-200"><tr><td colspan="5" class="text-center p-10 text-gray-500">Tidak ada data.</td></tr></tbody>
-                            </table>
-                        </div>
+                        <div class="card overflow-x-auto"><div id="loader-attendance" class="hidden justify-center items-center p-10"><div class="loader"></div><p class="ml-4 text-gray-600">Memuat data...</p></div><table id="attendance-table-container" class="min-w-full divide-y divide-gray-200"><thead class="bg-gray-50"><tr><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NIS</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Siswa</th><th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kelas</th><th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Kehadiran</th></tr></thead><tbody id="attendance-table-body" class="bg-white divide-y divide-gray-200"><tr><td colspan="5" class="text-center p-10 text-gray-500">Tidak ada data.</td></tr></tbody></table></div>
                     </main>
 
                     <!-- Grades View -->
                     <main id="grades-view" class="hidden flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4 sm:p-6">
-                        <div class="card p-4 mb-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <!-- Subject Management -->
-                                <div class="space-y-2">
-                                    <label for="subject-select" class="font-semibold text-gray-700">Pilih Mata Pelajaran</label>
-                                    <select id="subject-select" class="input-field w-full px-3 py-2 border rounded-lg focus:outline-none"><option value="">Pilih Mapel...</option></select>
-                                    <div class="flex space-x-2 pt-1">
-                                        <input type="text" id="new-subject-input" placeholder="Nama Mapel Baru" class="input-field flex-grow px-3 py-2 border rounded-lg focus:outline-none">
-                                        <button id="add-subject-btn" class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Tambah</button>
-                                    </div>
-                                </div>
-                                <!-- Project Management -->
-                                <div class="space-y-2">
-                                    <label for="project-list" class="font-semibold text-gray-700">Projek / Penilaian</label>
-                                    <ul id="project-list" class="text-sm text-gray-600 list-disc list-inside bg-gray-50 p-3 rounded-lg h-20 overflow-y-auto"><li>Pilih mapel terlebih dahulu</li></ul>
-                                    <div class="flex space-x-2 pt-1">
-                                        <input type="text" id="new-project-input" placeholder="Nama Projek Baru" class="input-field flex-grow px-3 py-2 border rounded-lg focus:outline-none">
-                                        <button id="add-project-btn" class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Tambah</button>
-                                    </div>
-                                </div>
-                                <!-- Filters for Grades -->
-                                <div class="space-y-2">
-                                     <label for="class-filter-grades" class="font-semibold text-gray-700">Filter Kelas</label>
-                                     <select id="class-filter-grades" class="input-field w-full px-3 py-2 border rounded-lg focus:outline-none"><option value="">Semua Kelas</option></select>
-                                     <label for="name-filter-grades" class="font-semibold text-gray-700 mt-2 block">Cari Nama Siswa</label>
-                                     <input type="text" id="name-filter-grades" placeholder="Ketik nama..." class="input-field w-full px-3 py-2 border rounded-lg focus:outline-none">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card overflow-x-auto">
-                            <div id="loader-grades" class="hidden justify-center items-center p-10"><div class="loader"></div><p class="ml-4 text-gray-600">Memuat data...</p></div>
-                            <table id="grades-table-container" class="min-w-full divide-y divide-gray-200">
-                                <thead id="grades-table-head" class="bg-gray-50"></thead>
-                                <tbody id="grades-table-body" class="bg-white divide-y divide-gray-200"></tbody>
-                            </table>
-                        </div>
+                        <div class="card p-4 mb-6"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="space-y-2"><label for="subject-select" class="font-semibold text-gray-700">Pilih Mata Pelajaran</label><select id="subject-select" class="input-field w-full px-3 py-2 border rounded-lg focus:outline-none"><option value="">Pilih Mapel...</option></select><div class="flex space-x-2 pt-1"><input type="text" id="new-subject-input" placeholder="Nama Mapel Baru" class="input-field flex-grow px-3 py-2 border rounded-lg focus:outline-none"><button id="add-subject-btn" class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Tambah</button></div></div>
+                                <div class="space-y-2"><label for="project-list" class="font-semibold text-gray-700">Projek / Penilaian</label><ul id="project-list" class="text-sm text-gray-600 list-disc list-inside bg-gray-50 p-3 rounded-lg h-20 overflow-y-auto"><li>Pilih mapel terlebih dahulu</li></ul><div class="flex space-x-2 pt-1"><input type="text" id="new-project-input" placeholder="Nama Projek Baru" class="input-field flex-grow px-3 py-2 border rounded-lg focus:outline-none"><button id="add-project-btn" class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Tambah</button></div></div>
+                                <div class="space-y-2"><label for="class-filter-grades" class="font-semibold text-gray-700">Filter Kelas</label><select id="class-filter-grades" class="input-field w-full px-3 py-2 border rounded-lg focus:outline-none"><option value="">Semua Kelas</option></select><label for="name-filter-grades" class="font-semibold text-gray-700 mt-2 block">Cari Nama Siswa</label><input type="text" id="name-filter-grades" placeholder="Ketik nama..." class="input-field w-full px-3 py-2 border rounded-lg focus:outline-none"></div>
+                        </div></div>
+                        <div class="card overflow-x-auto"><div id="loader-grades" class="hidden justify-center items-center p-10"><div class="loader"></div><p class="ml-4 text-gray-600">Memuat data...</p></div><table id="grades-table-container" class="min-w-full divide-y divide-gray-200"><thead id="grades-table-head" class="bg-gray-50"></thead><tbody id="grades-table-body" class="bg-white divide-y divide-gray-200"></tbody></table></div>
                     </main>
                 </div>
             </div>
         </div>
         
-        <!-- Modal for Export Options -->
-        <div id="export-modal" class="hidden fixed z-10 inset-0 overflow-y-auto">
+        <!-- Modal for Attendance Export Options -->
+        <div id="attendance-export-modal" class="hidden fixed z-40 inset-0 overflow-y-auto">
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                 <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div><span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
                 <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">Opsi Export Laporan Absensi</h3>
-                        <div class="mt-4 space-y-4">
-                            <div><label for="export-class-filter" class="block text-sm font-medium text-gray-700">Filter Kelas</label><select id="export-class-filter" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"><option value="">Semua Kelas</option></select></div>
-                            <div><label for="export-year-filter" class="block text-sm font-medium text-gray-700">Tahun Ajaran</label><input type="number" id="export-year-filter" placeholder="Contoh: 2024" class="input-field mt-1 block w-full sm:text-sm border-gray-300 rounded-md"></div>
-                            <div><label class="block text-sm font-medium text-gray-700">Rentang Tanggal</label><div class="mt-1 flex space-x-2"><input type="date" id="export-start-date" class="input-field block w-full sm:text-sm border-gray-300 rounded-md"><span class="self-center">s/d</span><input type="date" id="export-end-date" class="input-field block w-full sm:text-sm border-gray-300 rounded-md"></div></div>
-                        </div>
-                    </div>
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4"><h3 class="text-lg leading-6 font-medium text-gray-900">Opsi Export Rekap Absensi</h3><div class="mt-4 space-y-4">
+                        <div><label for="export-class-filter-att" class="block text-sm font-medium text-gray-700">Filter Kelas</label><select id="export-class-filter-att" class="input-field mt-1 block w-full rounded-md"><option value="">Semua Kelas</option></select></div>
+                        <div><label class="block text-sm font-medium text-gray-700">Rentang Tanggal</label><div class="mt-1 flex space-x-2"><input type="date" id="export-start-date-att" class="input-field block w-full rounded-md"><span class="self-center">s/d</span><input type="date" id="export-end-date-att" class="input-field block w-full rounded-md"></div></div>
+                    </div></div>
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                        <button type="button" id="confirm-export-button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 btn-secondary text-base font-medium text-white sm:ml-3 sm:w-auto sm:text-sm">Export</button>
-                        <button type="button" id="cancel-export-button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Batal</button>
+                        <button type="button" id="confirm-export-attendance-button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 btn-secondary text-base font-medium text-white sm:ml-3 sm:w-auto sm:text-sm">Export</button>
+                        <button type="button" class="cancel-export-button mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Batal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Grades Export Options -->
+        <div id="grades-export-modal" class="hidden fixed z-40 inset-0 overflow-y-auto">
+            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div><span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4"><h3 class="text-lg leading-6 font-medium text-gray-900">Opsi Export Rekap Nilai</h3><div class="mt-4 space-y-4">
+                        <div><label for="export-class-filter-grades" class="block text-sm font-medium text-gray-700">Filter Kelas</label><select id="export-class-filter-grades" class="input-field mt-1 block w-full rounded-md"><option value="">Semua Kelas</option></select></div>
+                        <div><label for="export-subject-filter" class="block text-sm font-medium text-gray-700">Filter Mata Pelajaran</label><select id="export-subject-filter" class="input-field mt-1 block w-full rounded-md"><option value="">Semua Mapel</option></select></div>
+                    </div></div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button type="button" id="confirm-export-grades-button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 btn-secondary text-base font-medium text-white sm:ml-3 sm:w-auto sm:text-sm">Export</button>
+                        <button type="button" class="cancel-export-button mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Batal</button>
                     </div>
                 </div>
             </div>
@@ -283,45 +204,33 @@
         import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
         import { getFirestore, collection, addDoc, getDocs, setDoc, doc, query, where, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // --- GLOBAL STATE ---
         let students = [], attendance = {}, grades = {}, subjects = [], projects = [];
         let currentUser = null, selectedSubjectId = null;
 
-        // --- DOM ELEMENTS ---
         const loginScreen = document.getElementById('login-screen'), dashboardScreen = document.getElementById('dashboard-screen');
         const loginButton = document.getElementById('login-button'), logoutButton = document.getElementById('logout-button');
         const importButton = document.getElementById('import-button'), importFile = document.getElementById('import-file');
-        const exportButton = document.getElementById('export-button'), clearDataButton = document.getElementById('clear-data-button');
+        const clearDataButton = document.getElementById('clear-data-button');
         const mainTitle = document.getElementById('main-title');
         const sidebar = document.getElementById('sidebar'), sidebarToggle = document.getElementById('sidebar-toggle'), sidebarOverlay = document.getElementById('sidebar-overlay');
-        
-        // Views
         const attendanceView = document.getElementById('attendance-view'), gradesView = document.getElementById('grades-view');
         const navAttendance = document.getElementById('nav-attendance'), navGrades = document.getElementById('nav-grades');
-
-        // Attendance View Elements
         const attendanceTableBody = document.getElementById('attendance-table-body'), dateFilter = document.getElementById('date-filter');
-        const classFilter = document.getElementById('class-filter'), nameFilter = document.getElementById('name-filter');
-        const loaderAttendance = document.getElementById('loader-attendance'), attendanceTableContainer = document.getElementById('attendance-table-container');
-
-        // Grades View Elements
+        const classFilter = document.getElementById('class-filter'), nameFilter = document.getElementById('name-filter'), absenceFilter = document.getElementById('absence-filter');
+        const loaderAttendance = document.getElementById('loader-attendance');
         const subjectSelect = document.getElementById('subject-select'), newSubjectInput = document.getElementById('new-subject-input'), addSubjectBtn = document.getElementById('add-subject-btn');
         const projectList = document.getElementById('project-list'), newProjectInput = document.getElementById('new-project-input'), addProjectBtn = document.getElementById('add-project-btn');
         const gradesTableHead = document.getElementById('grades-table-head'), gradesTableBody = document.getElementById('grades-table-body');
         const classFilterGrades = document.getElementById('class-filter-grades'), nameFilterGrades = document.getElementById('name-filter-grades');
-        const loaderGrades = document.getElementById('loader-grades'), gradesTableContainer = document.getElementById('grades-table-container');
-
-        // --- INITIALIZATION ---
+        const loaderGrades = document.getElementById('loader-grades');
+        const attendanceExportModal = document.getElementById('attendance-export-modal'), gradesExportModal = document.getElementById('grades-export-modal');
         
-        // Apply customizations from localStorage on initial script load for login screen
         applyCustomizations(JSON.parse(localStorage.getItem('customization')) || {});
 
-        // --- AUTHENTICATION ---
         onAuthStateChanged(auth, user => {
             currentUser = user;
             if (user) {
@@ -347,21 +256,17 @@
         });
         logoutButton.addEventListener('click', () => signOut(auth));
 
-        // --- APP INITIALIZATION & NAVIGATION ---
         async function initApp() {
             setTodayDate();
             addEventListeners();
-            await loadCustomization(); // Load customizations from Firestore
-            await fetchStudents();
+            await loadCustomization();
+            await fetchAllData();
             switchView('attendance');
         }
 
         function switchView(viewName) {
-            attendanceView.classList.add('hidden');
-            gradesView.classList.add('hidden');
-            navAttendance.classList.remove('active');
-            navGrades.classList.remove('active');
-
+            [attendanceView, gradesView].forEach(v => v.classList.add('hidden'));
+            [navAttendance, navGrades].forEach(n => n.classList.remove('active'));
             if (viewName === 'attendance') {
                 attendanceView.classList.remove('hidden');
                 navAttendance.classList.add('active');
@@ -373,7 +278,6 @@
                 mainTitle.textContent = 'Input Nilai';
                 initGradesView();
             }
-            // Hide sidebar on navigation for mobile
             sidebar.classList.add('-translate-x-full');
             sidebarOverlay.classList.add('hidden');
         }
@@ -384,7 +288,15 @@
             document.getElementById('current-date').textContent = new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         }
 
-        // --- DATA FETCHING ---
+        async function fetchAllData() {
+            if (!currentUser) return;
+            showLoader('attendance', true);
+            showLoader('grades', true);
+            await Promise.all([fetchStudents(), fetchSubjects(), fetchAllGrades()]);
+            showLoader('attendance', false);
+            showLoader('grades', false);
+        }
+
         async function fetchStudents() {
             if (!currentUser) return;
             try {
@@ -393,9 +305,7 @@
                 students = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 const classSet = new Set(students.map(s => s.kelas));
                 populateClassFilters(classSet);
-            } catch (error) {
-                handleFirestoreError(error, 'memuat data siswa');
-            }
+            } catch (error) { handleFirestoreError(error, 'memuat data siswa'); }
         }
 
         async function fetchAttendanceForDate() {
@@ -406,12 +316,8 @@
                 const snapshot = await getDocs(q);
                 attendance = {};
                 snapshot.forEach(doc => { const data = doc.data(); attendance[data.studentId] = data.status; });
-            } catch (error) {
-                handleFirestoreError(error, 'memuat data absensi');
-            } finally {
-                renderAttendanceTable();
-                showLoader('attendance', false);
-            }
+            } catch (error) { handleFirestoreError(error, 'memuat data absensi');
+            } finally { renderAttendanceTable(); showLoader('attendance', false); }
         }
 
         async function fetchSubjects() {
@@ -421,9 +327,7 @@
                 const snapshot = await getDocs(q);
                 subjects = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 populateSubjectSelect();
-            } catch (error) {
-                handleFirestoreError(error, 'memuat mata pelajaran');
-            }
+            } catch (error) { handleFirestoreError(error, 'memuat mata pelajaran'); }
         }
 
         async function fetchProjects(subjectId) {
@@ -432,10 +336,8 @@
                 const q = query(collection(db, 'users', currentUser.uid, 'projects'), where("subjectId", "==", subjectId));
                 const snapshot = await getDocs(q);
                 projects = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                renderProjectList();
-            } catch (error) {
-                handleFirestoreError(error, 'memuat projek');
-            }
+            } catch (error) { handleFirestoreError(error, 'memuat projek');
+            } finally { renderProjectList(); }
         }
         
         async function fetchAllGrades() {
@@ -444,24 +346,28 @@
                 const q = query(collection(db, 'users', currentUser.uid, 'grades'));
                 const snapshot = await getDocs(q);
                 grades = {};
-                snapshot.forEach(doc => {
-                    grades[doc.id] = doc.data();
-                });
-            } catch (error) {
-                handleFirestoreError(error, 'memuat nilai');
-            }
+                snapshot.forEach(doc => { grades[doc.id] = doc.data(); });
+            } catch (error) { handleFirestoreError(error, 'memuat nilai'); }
         }
 
-        // --- UI RENDERING & POPULATION ---
         function renderAttendanceTable() {
-            const classValue = classFilter.value, nameValue = nameFilter.value.toLowerCase();
-            const filtered = students.filter(s => (!classValue || s.kelas === classValue) && s.nama.toLowerCase().includes(nameValue));
+            const classValue = classFilter.value, nameValue = nameFilter.value.toLowerCase(), absenceValue = absenceFilter.value;
+            let filtered = students.filter(s => 
+                (!classValue || s.kelas === classValue) && 
+                s.nama.toLowerCase().includes(nameValue)
+            );
+            if (absenceValue) {
+                filtered = filtered.filter(s => {
+                    const status = attendance[s.id] || 'Hadir';
+                    return status === absenceValue;
+                });
+            }
             
             attendanceTableBody.innerHTML = '';
             if (filtered.length === 0) { attendanceTableBody.innerHTML = `<tr><td colspan="5" class="text-center p-10 text-gray-500">Tidak ada siswa yang cocok.</td></tr>`; return; }
             
             filtered.sort((a,b) => a.nama.localeCompare(b.nama)).forEach((student, i) => {
-                const attStatus = attendance[student.id] || '';
+                const attStatus = attendance[student.id] || 'Hadir';
                 const row = attendanceTableBody.insertRow();
                 row.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
                 row.innerHTML = `
@@ -469,28 +375,24 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${student.nis}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${student.nama}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${student.kelas}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                        <select data-id="${student.id}" class="attendance-select w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                            <option value="" ${attStatus === '' ? 'selected' : ''}>Pilih</option>
-                            <option value="Hadir" ${attStatus === 'Hadir' ? 'selected' : ''}>Hadir</option>
-                            <option value="Sakit" ${attStatus === 'Sakit' ? 'selected' : ''}>Sakit</option>
-                            <option value="Ijin" ${attStatus === 'Ijin' ? 'selected' : ''}>Ijin</option>
-                            <option value="Alpa" ${attStatus === 'Alpa' ? 'selected' : ''}>Alpa</option>
-                        </select>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-center">
+                        <div class="flex justify-center space-x-1">
+                            <button data-id="${student.id}" data-status="Sakit" class="att-btn w-8 h-8 rounded-md ${attStatus === 'Sakit' ? 'active' : ''}">S</button>
+                            <button data-id="${student.id}" data-status="Ijin" class="att-btn w-8 h-8 rounded-md ${attStatus === 'Ijin' ? 'active' : ''}">I</button>
+                            <button data-id="${student.id}" data-status="Alpa" class="att-btn w-8 h-8 rounded-md ${attStatus === 'Alpa' ? 'active' : ''}">A</button>
+                        </div>
                     </td>`;
             });
-            document.querySelectorAll('.attendance-select').forEach(el => el.addEventListener('change', handleAttendanceChange));
+            document.querySelectorAll('.att-btn').forEach(el => el.addEventListener('click', handleAttendanceButtonClick));
         }
 
         function renderGradesTable() {
-            // 1. Render Header
             gradesTableHead.innerHTML = '';
             let headerRow = '<tr><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th><th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Siswa</th>';
             projects.sort((a,b) => a.name.localeCompare(b.name)).forEach(p => { headerRow += `<th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">${p.name}</th>`; });
             headerRow += '</tr>';
             gradesTableHead.innerHTML = headerRow;
 
-            // 2. Render Body
             const classValue = classFilterGrades.value, nameValue = nameFilterGrades.value.toLowerCase();
             const filtered = students.filter(s => (!classValue || s.kelas === classValue) && s.nama.toLowerCase().includes(nameValue));
 
@@ -504,9 +406,7 @@
                 const subjectGrades = studentGrades[selectedSubjectId] || {};
                 projects.forEach(p => {
                     const grade = subjectGrades[p.id] || '';
-                    bodyRow += `<td class="px-2 py-1 whitespace-nowrap text-sm text-gray-500">
-                        <input type="number" data-student-id="${student.id}" data-project-id="${p.id}" value="${grade}" class="grade-input w-20 text-center rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="N/A">
-                        </td>`;
+                    bodyRow += `<td class="px-2 py-1 whitespace-nowrap text-sm text-gray-500"><input type="number" data-student-id="${student.id}" data-project-id="${p.id}" value="${grade}" class="grade-input w-20 text-center rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" placeholder="N/A"></td>`;
                 });
                 bodyRow += '</tr>';
                 gradesTableBody.innerHTML += bodyRow;
@@ -516,15 +416,18 @@
 
         function populateClassFilters(classSet) {
             const sorted = Array.from(classSet).sort();
-            [classFilter, classFilterGrades, document.getElementById('export-class-filter')].forEach(filter => {
+            [classFilter, classFilterGrades, document.getElementById('export-class-filter-att'), document.getElementById('export-class-filter-grades')].forEach(filter => {
                 filter.innerHTML = '<option value="">Semua Kelas</option>';
                 sorted.forEach(c => { filter.innerHTML += `<option value="${c}">${c}</option>`; });
             });
         }
 
         function populateSubjectSelect() {
-            subjectSelect.innerHTML = '<option value="">Pilih Mapel...</option>';
-            subjects.sort((a,b) => a.name.localeCompare(b.name)).forEach(s => { subjectSelect.innerHTML += `<option value="${s.id}">${s.name}</option>`; });
+            const filters = [subjectSelect, document.getElementById('export-subject-filter')];
+            filters.forEach(filter => {
+                filter.innerHTML = '<option value="">Pilih Mapel...</option>';
+                subjects.sort((a,b) => a.name.localeCompare(b.name)).forEach(s => { filter.innerHTML += `<option value="${s.id}">${s.name}</option>`; });
+            });
         }
 
         function renderProjectList() {
@@ -535,55 +438,41 @@
 
         async function initGradesView() {
             showLoader('grades', true);
-            await fetchSubjects();
-            await fetchAllGrades();
+            await fetchProjects(selectedSubjectId);
             renderGradesTable();
             showLoader('grades', false);
         }
 
         function showLoader(view, show) {
-            const loader = view === 'attendance' ? loaderAttendance : loaderGrades;
-            const container = view === 'attendance' ? attendanceTableContainer : gradesTableContainer;
+            const loader = view === 'attendance' ? loaderAttendance : document.getElementById('loader-grades');
+            const table = view === 'attendance' ? document.getElementById('attendance-table-container') : document.getElementById('grades-table-container');
             loader.classList.toggle('hidden', !show);
             loader.classList.toggle('flex', show);
-            container.classList.toggle('hidden', show);
+            table.classList.toggle('hidden', show);
         }
 
-        // --- EVENT HANDLERS & LISTENERS ---
         function addEventListeners() {
-            // Navigation
             navAttendance.addEventListener('click', (e) => { e.preventDefault(); switchView('attendance'); });
             navGrades.addEventListener('click', (e) => { e.preventDefault(); switchView('grades'); });
-
-            // Sidebar Toggle
-            sidebarToggle.addEventListener('click', () => {
-                sidebar.classList.remove('-translate-x-full');
-                sidebarOverlay.classList.remove('hidden');
-            });
-            sidebarOverlay.addEventListener('click', () => {
-                sidebar.classList.add('-translate-x-full');
-                sidebarOverlay.classList.add('hidden');
-            });
-
-            // Attendance Filters
+            sidebarToggle.addEventListener('click', () => { sidebar.classList.remove('-translate-x-full'); sidebarOverlay.classList.remove('hidden'); });
+            sidebarOverlay.addEventListener('click', () => { sidebar.classList.add('-translate-x-full'); sidebarOverlay.classList.add('hidden'); });
             dateFilter.addEventListener('change', fetchAttendanceForDate);
-            [classFilter, nameFilter].forEach(el => el.addEventListener('input', renderAttendanceTable));
-
-            // Grades Filters & Management
+            [classFilter, nameFilter, absenceFilter].forEach(el => el.addEventListener('input', renderAttendanceTable));
             subjectSelect.addEventListener('change', handleSubjectSelect);
             addSubjectBtn.addEventListener('click', handleAddSubject);
             addProjectBtn.addEventListener('click', handleAddProject);
             [classFilterGrades, nameFilterGrades].forEach(el => el.addEventListener('input', renderGradesTable));
-            
-            // Data Management
             importButton.addEventListener('click', () => importFile.click());
             importFile.addEventListener('change', handleImport);
-            exportButton.addEventListener('click', () => document.getElementById('export-modal').classList.remove('hidden'));
             clearDataButton.addEventListener('click', handleClearAllData);
-            document.getElementById('cancel-export-button').addEventListener('click', () => document.getElementById('export-modal').classList.add('hidden'));
-            document.getElementById('confirm-export-button').addEventListener('click', handleExport);
-
-            // Customization
+            document.getElementById('export-attendance-button').addEventListener('click', () => attendanceExportModal.classList.remove('hidden'));
+            document.getElementById('export-grades-button').addEventListener('click', () => gradesExportModal.classList.remove('hidden'));
+            document.querySelectorAll('.cancel-export-button').forEach(btn => btn.addEventListener('click', () => {
+                attendanceExportModal.classList.add('hidden');
+                gradesExportModal.classList.add('hidden');
+            }));
+            document.getElementById('confirm-export-attendance-button').addEventListener('click', handleAttendanceExport);
+            document.getElementById('confirm-export-grades-button').addEventListener('click', handleGradesExport);
             document.getElementById('primary-color').addEventListener('input', e => saveCustomization({ primaryColor: e.target.value }));
             document.getElementById('secondary-color').addEventListener('input', e => saveCustomization({ secondaryColor: e.target.value }));
             document.getElementById('logo-upload').addEventListener('change', handleLogoUpload);
@@ -600,32 +489,31 @@
         async function handleAddSubject() {
             const name = newSubjectInput.value.trim();
             if (!name || !currentUser) return;
-            try {
-                await addDoc(collection(db, 'users', currentUser.uid, 'subjects'), { name });
-                newSubjectInput.value = '';
-                await fetchSubjects();
+            try { await addDoc(collection(db, 'users', currentUser.uid, 'subjects'), { name }); newSubjectInput.value = ''; await fetchSubjects();
             } catch (error) { handleFirestoreError(error, 'menambah mata pelajaran'); }
         }
 
         async function handleAddProject() {
             const name = newProjectInput.value.trim();
             if (!name || !selectedSubjectId || !currentUser) { alert('Pilih mata pelajaran terlebih dahulu.'); return; }
-            try {
-                await addDoc(collection(db, 'users', currentUser.uid, 'projects'), { name, subjectId: selectedSubjectId });
-                newProjectInput.value = '';
-                await fetchProjects(selectedSubjectId);
-                renderGradesTable();
+            try { await addDoc(collection(db, 'users', currentUser.uid, 'projects'), { name, subjectId: selectedSubjectId }); newProjectInput.value = ''; await fetchProjects(selectedSubjectId); renderGradesTable();
             } catch (error) { handleFirestoreError(error, 'menambah projek'); }
         }
 
-        async function handleAttendanceChange(e) {
-            const { id: studentId } = e.target.dataset;
-            const status = e.target.value, date = dateFilter.value;
-            if (!status || !currentUser) return;
+        async function handleAttendanceButtonClick(e) {
+            const { id: studentId, status } = e.target.dataset;
+            const date = dateFilter.value;
+            const currentStatus = attendance[studentId];
+            const ref = doc(db, 'users', currentUser.uid, 'attendance', `${date}_${studentId}`);
             try {
-                const ref = doc(db, 'users', currentUser.uid, 'attendance', `${date}_${studentId}`);
-                await setDoc(ref, { studentId, date, status });
-                attendance[studentId] = status;
+                if (currentStatus === status) { // Toggle off
+                    await deleteDoc(ref);
+                    delete attendance[studentId];
+                } else { // Set new status
+                    await setDoc(ref, { studentId, date, status });
+                    attendance[studentId] = status;
+                }
+                renderAttendanceTable();
             } catch (error) { handleFirestoreError(error, 'menyimpan kehadiran'); }
         }
 
@@ -635,9 +523,7 @@
             if (!currentUser) return;
             try {
                 const gradeRef = doc(db, 'users', currentUser.uid, 'grades', studentId);
-                const updatePath = `${selectedSubjectId}.${projectId}`;
                 await setDoc(gradeRef, { [selectedSubjectId]: { [projectId]: grade } }, { merge: true });
-                // Update local state
                 if (!grades[studentId]) grades[studentId] = {};
                 if (!grades[studentId][selectedSubjectId]) grades[studentId][selectedSubjectId] = {};
                 grades[studentId][selectedSubjectId][projectId] = grade;
@@ -645,82 +531,44 @@
         }
         
         async function handleClearAllData() {
-            if (!confirm('Apakah Anda YAKIN ingin menghapus SEMUA data (siswa, absensi, nilai, mapel)? Tindakan ini tidak dapat diurungkan.')) return;
+            if (!confirm('YAKIN ingin menghapus SEMUA data? Tindakan ini tidak dapat diurungkan.')) return;
             showLoader('attendance', true);
             try {
-                await clearCollection('students');
-                await clearCollection('attendance');
-                await clearCollection('grades');
-                await clearCollection('subjects');
-                await clearCollection('projects');
-                
-                // Clear local state
+                await Promise.all(['students', 'attendance', 'grades', 'subjects', 'projects'].map(c => clearCollection(c)));
                 students = []; attendance = {}; grades = {}; subjects = []; projects = []; selectedSubjectId = null;
-
-                // Reset UI
-                populateClassFilters(new Set());
-                populateSubjectSelect();
-                renderProjectList();
-                renderAttendanceTable();
-                renderGradesTable();
-                
+                populateClassFilters(new Set()); populateSubjectSelect(); renderProjectList(); renderAttendanceTable(); renderGradesTable();
                 alert('Semua data telah berhasil dihapus.');
-            } catch(error) {
-                handleFirestoreError(error, 'menghapus semua data');
-            } finally {
-                showLoader('attendance', false);
-            }
+            } catch(error) { handleFirestoreError(error, 'menghapus semua data');
+            } finally { showLoader('attendance', false); }
         }
 
-        // --- UTILITY FUNCTIONS ---
-        async function clearCollection(collectionName) {
+        async function clearCollection(name) {
             if (!currentUser) return;
-            const q = query(collection(db, 'users', currentUser.uid, collectionName));
+            const q = query(collection(db, 'users', currentUser.uid, name));
             const snapshot = await getDocs(q);
-            const deletePromises = snapshot.docs.map(doc => deleteDoc(doc.ref));
-            await Promise.all(deletePromises);
+            await Promise.all(snapshot.docs.map(d => deleteDoc(d.ref)));
         }
 
         function handleFirestoreError(error, action) {
             console.error(`Error ${action}: `, error);
-            if (error.code === 'permission-denied') {
-                alert(`Gagal ${action}: Akses ditolak.\n\nPASTIKAN Anda telah mengatur Firestore Security Rules di Firebase Console dengan benar.`);
-            } else {
-                alert(`Gagal ${action}. Lihat console untuk detail.`);
-            }
+            alert(`Gagal ${action}. ${error.code === 'permission-denied' ? 'Akses ditolak. Periksa Firestore Security Rules.' : 'Lihat console untuk detail.'}`);
         }
         
         function applyCustomizations(settings) {
             const { primaryColor, secondaryColor, logoUrl } = settings;
-            if (primaryColor) {
-                document.documentElement.style.setProperty('--color-primary', primaryColor);
-                document.getElementById('primary-color').value = primaryColor;
-            }
-            if (secondaryColor) {
-                document.documentElement.style.setProperty('--color-secondary', secondaryColor);
-                document.getElementById('secondary-color').value = secondaryColor;
-            }
-            if (logoUrl) {
-                document.getElementById('login-logo').src = logoUrl;
-                document.getElementById('dashboard-logo').src = logoUrl;
-            }
+            if (primaryColor) { document.documentElement.style.setProperty('--color-primary', primaryColor); document.getElementById('primary-color').value = primaryColor; }
+            if (secondaryColor) { document.documentElement.style.setProperty('--color-secondary', secondaryColor); document.getElementById('secondary-color').value = secondaryColor; }
+            if (logoUrl) { document.getElementById('login-logo').src = logoUrl; document.getElementById('dashboard-logo').src = logoUrl; }
         }
 
         async function saveCustomization(settings) {
             if (!currentUser) return;
-            // Apply visually immediately
             applyCustomizations(settings);
-            // Save to localStorage for quick refresh
             const currentSettings = JSON.parse(localStorage.getItem('customization')) || {};
-            const newSettings = { ...currentSettings, ...settings };
-            localStorage.setItem('customization', JSON.stringify(newSettings));
-            // Save to Firestore for cross-device persistence
+            localStorage.setItem('customization', JSON.stringify({ ...currentSettings, ...settings }));
             const settingsRef = doc(db, 'users', currentUser.uid, 'settings', 'customization');
-            try {
-                await setDoc(settingsRef, settings, { merge: true });
-            } catch (error) {
-                handleFirestoreError(error, 'menyimpan pengaturan tampilan');
-            }
+            try { await setDoc(settingsRef, settings, { merge: true });
+            } catch (error) { handleFirestoreError(error, 'menyimpan pengaturan tampilan'); }
         }
 
         async function loadCustomization() {
@@ -733,9 +581,7 @@
                     applyCustomizations(settings);
                     localStorage.setItem('customization', JSON.stringify(settings));
                 }
-            } catch (error) {
-                 handleFirestoreError(error, 'memuat pengaturan tampilan');
-            }
+            } catch (error) { handleFirestoreError(error, 'memuat pengaturan tampilan'); }
         }
 
         function handleLogoUpload(e) {
@@ -744,12 +590,7 @@
                 const reader = new FileReader();
                 reader.onload = (event) => {
                     const url = event.target.result;
-                    // Note: Base64 can be very large. For production, upload to Firebase Storage and save the URL.
-                    // For this example, we save the Base64 string directly.
-                    if (url.length > 1000000) { // Approx 1MB limit check
-                        alert('Ukuran file logo terlalu besar. Coba gunakan gambar yang lebih kecil.');
-                        return;
-                    }
+                    if (url.length > 1000000) { alert('Ukuran file logo terlalu besar.'); return; }
                     saveCustomization({ logoUrl: url });
                 };
                 reader.readAsDataURL(file);
@@ -758,27 +599,17 @@
 
         async function handleImport(event) {
             const file = event.target.files[0]; if (!file) return;
-            if (!confirm('Mengimpor data baru akan MENGGANTI semua data siswa yang ada. Lanjutkan?')) {
-                event.target.value = '';
-                return;
-            }
+            if (!confirm('Mengimpor data baru akan MENGGANTI semua data siswa yang ada. Lanjutkan?')) { event.target.value = ''; return; }
             showLoader('attendance', true);
             const reader = new FileReader();
             reader.onload = async (e) => {
                 try {
-                    // Clear existing students before importing new ones
                     await clearCollection('students');
-                    
                     const data = new Uint8Array(e.target.result);
                     const workbook = XLSX.read(data, { type: 'array' });
                     const json = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
                     if (json.length > 0 && !('no' in json[0] && 'nis' in json[0] && 'nama' in json[0] && 'kelas' in json[0])) { throw new Error('Format Excel tidak sesuai. Header harus: no, nis, nama, kelas'); }
-                    
-                    const addPromises = json.map(row => 
-                        addDoc(collection(db, 'users', currentUser.uid, 'students'), { no: row.no, nis: String(row.nis), nama: row.nama, kelas: row.kelas })
-                    );
-                    await Promise.all(addPromises);
-                    
+                    await Promise.all(json.map(row => addDoc(collection(db, 'users', currentUser.uid, 'students'), { no: row.no, nis: String(row.nis), nama: row.nama, kelas: row.kelas })));
                     alert('Import data siswa berhasil! Data lama telah diganti.');
                     await fetchStudents();
                     renderAttendanceTable();
@@ -788,11 +619,74 @@
             event.target.value = '';
         }
 
-        async function handleExport() {
-            // This function exports attendance data, can be extended for grades later
-            alert('Mempersiapkan data absensi untuk export...');
-            // Export logic remains the same as previous version, focused on attendance
-            document.getElementById('export-modal').classList.add('hidden');
+        async function handleAttendanceExport() {
+            const exportClass = document.getElementById('export-class-filter-att').value;
+            const startDate = document.getElementById('export-start-date-att').value;
+            const endDate = document.getElementById('export-end-date-att').value;
+            if (!startDate || !endDate) { alert('Silakan tentukan rentang tanggal.'); return; }
+            
+            alert('Mempersiapkan rekap absensi...');
+            attendanceExportModal.classList.add('hidden');
+
+            try {
+                let studentsToExport = students.filter(s => !exportClass || s.kelas === exportClass);
+                const summary = studentsToExport.reduce((acc, s) => {
+                    acc[s.id] = { 'NIS': s.nis, 'Nama Siswa': s.nama, 'Kelas': s.kelas, 'Sakit': 0, 'Ijin': 0, 'Alpa': 0 };
+                    return acc;
+                }, {});
+
+                const q = query(collection(db, 'users', currentUser.uid, 'attendance'), where('date', '>=', startDate), where('date', '<=', endDate));
+                const snapshot = await getDocs(q);
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (summary[data.studentId] && data.status in summary[data.studentId]) {
+                        summary[data.studentId][data.status]++;
+                    }
+                });
+
+                const exportData = Object.values(summary);
+                if (exportData.length === 0) { alert('Tidak ada data untuk diexport.'); return; }
+
+                const worksheet = XLSX.utils.json_to_sheet(exportData);
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(workbook, worksheet, 'Rekap Absensi');
+                XLSX.writeFile(workbook, `Rekap_Absensi_${exportClass || 'Semua'}_${startDate}_sd_${endDate}.xlsx`);
+            } catch (error) { handleFirestoreError(error, 'mengekspor rekap absensi'); }
+        }
+
+        async function handleGradesExport() {
+            const exportClass = document.getElementById('export-class-filter-grades').value;
+            const exportSubjectId = document.getElementById('export-subject-filter').value;
+            if (!exportSubjectId) { alert('Silakan pilih mata pelajaran.'); return; }
+
+            alert('Mempersiapkan rekap nilai...');
+            gradesExportModal.classList.add('hidden');
+
+            try {
+                let studentsToExport = students.filter(s => !exportClass || s.kelas === exportClass);
+                
+                await fetchProjects(exportSubjectId); // Make sure projects for the subject are loaded
+                if (projects.length === 0) { alert('Tidak ada data projek/penilaian untuk mata pelajaran ini.'); return; }
+
+                const headers = ['NIS', 'Nama Siswa', 'Kelas', ...projects.map(p => p.name)];
+                const exportData = studentsToExport.map(student => {
+                    const row = { 'NIS': student.nis, 'Nama Siswa': student.nama, 'Kelas': student.kelas };
+                    const studentGrades = grades[student.id] || {};
+                    const subjectGrades = studentGrades[exportSubjectId] || {};
+                    projects.forEach(p => {
+                        row[p.name] = subjectGrades[p.id] || '';
+                    });
+                    return row;
+                });
+
+                if (exportData.length === 0) { alert('Tidak ada data untuk diexport.'); return; }
+
+                const worksheet = XLSX.utils.json_to_sheet(exportData, {header: headers});
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(workbook, worksheet, 'Rekap Nilai');
+                const subjectName = subjects.find(s => s.id === exportSubjectId)?.name || 'Mapel';
+                XLSX.writeFile(workbook, `Rekap_Nilai_${subjectName}_${exportClass || 'Semua'}.xlsx`);
+            } catch (error) { handleFirestoreError(error, 'mengekspor rekap nilai'); }
         }
 
     </script>
